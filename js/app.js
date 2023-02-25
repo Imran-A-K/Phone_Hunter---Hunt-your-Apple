@@ -32,13 +32,27 @@ const displayPhones = phones =>{
                       </div>
                     </div>
     `
+    // stop loader or spinner
+        toggleSpinner(false)
     })
 }
+// handle search button click
 const searchButton = document.getElementById('search-btn')
 searchButton.addEventListener('click', function(){
+    // Start loader
+    toggleSpinner(true)
     const searchFieldText = document.getElementById('search-field').value
     // console.log(searchFieldText);
     loadPhones(searchFieldText)
 
 })
-loadPhones('phone')
+const toggleSpinner = isLoading =>{
+const loaderSection = document.getElementById('loader')
+if(isLoading){
+    loaderSection.classList.remove('d-none')
+}
+else{
+    loaderSection.classList.add('d-none')
+}
+}
+loadPhones()
