@@ -10,6 +10,15 @@ const displayPhones = phones =>{
     phonesContainer.innerHTML = ``
     // display 20 phones only
     phones =phones.slice(0,20)
+    //display no phones found if search is not found in API
+    const noPhone = document.getElementById('no-phones-found-message')
+    if(phones.length === 0 ){
+        noPhone.classList.remove('d-none')
+    }
+    else{
+        noPhone.classList.add('d-none') 
+    }
+    // display all phones
     phones.forEach(phone =>{
     //   const phoneDiv  = document.createElement('div')
     phonesContainer.innerHTML += `
@@ -32,4 +41,4 @@ searchButton.addEventListener('click', function(){
     loadPhones(searchFieldText)
 
 })
-loadPhones()
+loadPhones('phone')
